@@ -1,0 +1,35 @@
+<!--This script builds a zip for Teiid Server Installation -->
+<assembly>
+  
+  <id>jboss-as7-dist</id>
+  
+  <formats>
+    <format>zip</format>
+  </formats>
+  
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <baseDirectory>modules</baseDirectory>
+
+  <fileSets>
+    <fileSet>
+        <directory>kits/modules</directory>
+        <outputDirectory>${jbossas-module-root}</outputDirectory>     
+        <filtered>true</filtered> 
+        <includes>
+          <include>**/*</include>
+        </includes>   
+    </fileSet>    
+  </fileSets>
+  
+  <dependencySets>
+     <dependencySet>
+         <outputDirectory>${jbossas-module-root}/com/oracle/main</outputDirectory>
+         <useTransitiveDependencies>true</useTransitiveDependencies>
+         <includes>
+             <include>org.jboss.teiid:oracle-vpd</include>
+             <include>com.oracle:ojdbc6</include>
+         </includes>
+     </dependencySet>
+  </dependencySets>
+    
+</assembly>
